@@ -1,20 +1,28 @@
 # FPClassic for FL Studio
 
-**FPClassic for FL Studio** is an open-source project that aims to bring native, feature-rich support for the **PreSonus FaderPort Classic** to **FL Studio**.
+**FPClassic for FL Studio** is an open-source project that brings native support for the **PreSonus FaderPort Classic** to **FL Studio**.
 
-The goal is to move beyond generic MIDI mappings and Mackie Control emulation by taking advantage of the FaderPort Classic's native communication protocol. This allows the controller to behave as a dedicated control surface, providing a more natural and integrated workflow within FL Studio.
+Rather than relying on generic MIDI mappings or Mackie Control emulation, **FPClassic for FL Studio** communicates directly with the FaderPort Classic using its native protocol, providing a workflow designed specifically for FL Studio.
 
-The project focuses on:
+## Goals
 
-- Native communication with the FaderPort Classic.
-- Motorized fader support.
+**FPClassic for FL Studio** aims to provide:
+
+- Native communication with the PreSonus FaderPort Classic.
+- Full motorized fader support.
 - LED feedback and button state synchronization.
-- Tight integration with FL Studio's workflow.
-- Clean, maintainable, and well-documented code.
-- A modular architecture that can be extended in the future.
+- Seamless integration with FL Studio.
+- Clean, modular, and well-documented code.
+- A solid foundation for future improvements and new features.
 
-FPClassic for FL Studio is being designed with reliability and simplicity in mind. Every feature will be implemented only after understanding the underlying behavior of both the FaderPort and the FL Studio scripting API, avoiding unnecessary complexity and undocumented workarounds whenever possible.
+## Philosophy
 
-Although the primary objective is to support the original **PreSonus FaderPort Classic**, the project is structured to encourage experimentation, learning, and future expansion.
+**FPClassic for FL Studio** is developed with a focus on reliability, simplicity, and maintainability.
 
-Contributions, ideas, testing, and feedback are always welcome.
+Every feature in **FPClassic for FL Studio** is implemented only after understanding the behavior of both the PreSonus FaderPort Classic and the FL Studio scripting API. The goal is to build a controller script that feels like a native part of FL Studio while taking full advantage of the hardware's capabilities.
+
+## Open Source
+
+**FPClassic for FL Studio** is an open-source project created for the FL Studio community.
+
+Contributions, bug reports, feature suggestions, and testing are always welcome.
