@@ -132,14 +132,15 @@ FL Studio state
 
 ---
 
-## Known Limitations (TBD)
+## Current FL Studio MIDI Scripting API limitations
 
-Current FL Studio MIDI Scripting API limitations:
+FPClassic intentionally uses only the official FL Studio MIDI Scripting API. Some original FaderPort functions cannot currently be implemented because the required API is not available:
 
-- Punch In/Out marker creation
-- Loop marker creation
-- Shift + Rewind → Start
-- Shift + Fast Forward → End
+ - Shift + Rewind → Start (no API equivalent).
+ - Shift + Fast Forward → End (no API equivalent).
+ - Punch In marker creation (the API cannot create or modify Playlist Time Markers of type Start recording).
+ - Punch Out marker creation (same limitation).
+ - Loop marker creation (the API can create a standard marker, but not a Playlist Loop marker).
 
 ---
 
