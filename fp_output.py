@@ -7,6 +7,8 @@ Synchronizes the control objects with the FaderPort hardware.
 import time
 
 import device
+import general
+import midi
 import mixer
 import transport
 import ui
@@ -23,6 +25,8 @@ from fp_controls import *
 # ============================================================================
 
 _handshake_sent = False
+_last_beat = -1
+_play_led_until = 0.0
 
 # ============================================================================
 # Public API
@@ -38,6 +42,8 @@ def idle():
     global _handshake_sent
 
     if _handshake_sent:
+        refresh()
+        sync()
         return
 
     for switch in ALL_SWITCHES:
@@ -157,6 +163,32 @@ def _send_midi(status, data1, data2):
     message = status | (data1 << 8) | (data2 << 16)
     device.midiOutMsg(message)
 
+def _play_led_state():
+    global _last_beat, _play_led_until
+
+    if not transport.isPlaying():
+        _last_beat = -1
+        return False
+
+    abs_ticks = transport.getSongPos(midi.SONGLENGTH_ABSTICKS)
+    ppq = general.getRecPPQ()
+
+    beat = int(abs_ticks // ppq)
+
+    if beat != _last_beat:
+        _last_beat = beat
+
+        bpm = mixer.getCurrentTempo()
+        beat_duration = 60.0 / bpm
+
+        # Keep the LED on for approximately one quarter of a beat.
+        # Clamp between 80 ms and 200 ms to compensate for FL Studio's
+        # OnIdle() update frequency.
+        flash_duration = max(0.08, min(0.20, beat_duration * 0.25))
+
+        _play_led_until = time.time() + flash_duration
+
+    return time.time() < _play_led_until
 
 # ============================================================================
 # FL Studio synchronization
@@ -168,7 +200,7 @@ def refresh():
     # Transport
     playing = transport.isPlaying()
     stop.led = not playing
-    play.led = playing
+    play.led = _play_led_state()
     record.led = transport.isRecording()
 
     # Fader modes
