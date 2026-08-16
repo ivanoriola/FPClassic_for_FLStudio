@@ -146,20 +146,20 @@ FPClassic intentionally uses only the official FL Studio MIDI Scripting API. Som
 
 ## Changelog
 
-### Version 1.1.1
+### Version 1.2
 
 Improved
 
 - Added compatibility fallback for older FL Studio versions without the `enum` module.
 
-### Version 1.1.0
+### Version 1.1
 
 Improved
 
 - Play LED now flashes in sync with the project tempo.
 - Flash duration automatically adapts to the current BPM for a more natural visual beat indication.
 
-### Version 1.0.0
+### Version 1.0
 
 Initial public release.
 
