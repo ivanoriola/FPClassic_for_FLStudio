@@ -2,8 +2,11 @@
 FPClassic for FL Studio modes.
 """
 
-from enum import IntEnum
-
+try:
+    from enum import IntEnum
+except ImportError:
+    class IntEnum(int):
+        pass
 
 # ============================================================================
 # Fader Modes

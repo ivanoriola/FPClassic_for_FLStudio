@@ -146,6 +146,12 @@ FPClassic intentionally uses only the official FL Studio MIDI Scripting API. Som
 
 ## Changelog
 
+### Version 1.1.1
+
+Improved
+
+- Added compatibility fallback for older FL Studio versions without the `enum` module.
+
 ### Version 1.1.0
 
 Improved
